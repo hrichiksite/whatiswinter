@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <preload href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" as="style">
+    <title>What is Winter?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a8e6ff 0%, #ffffff 100%);
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 4em;
+            color: #c41e3a;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tree {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1;
+            font-size: 14px;
+            color: #00a86b;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        li::before {
+            content: "🎄 ";
+        }
+
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #000;
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            user-select: none;
+            cursor: default;
+            animation: snowfall 10s linear infinite;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #c41e3a;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What is winter?</h1>
+        <div class="tree">
+When the geese are flying south
+And the sky is grey, my dears,
+Close your eyes, and lift your nose;
+Listen with your careful ears.
+
+Feel the winter coming on,
+Hear it in the crackling trees;
+Note the crisping, quivering wind
+Sharply snapping at their leaves.
+
+Feel it on the windowpanes –
+Chilly glass on fingertips –
+Mark the biting of the air,
+Heated breath on numbing lips.
+
+See it in the early eves,
+In the glowing sunset where
+Shadows of the naked trees
+Rattle in the biting air.
+
+Watch the nuthatch and the wren;
+They know it is time once more
+To abandon careful nests,
+As they’ve done each year before.
+
+Let it rest upon your face,
+Let it reach and pull you in.
+See how pretty nature is
+When she ushers winter in.
+
+~ Barbara Vance
+Excerpt from the poetry collection “Suzie Bitner Was Afraid of the Drain”
+        </div>
+        <p>Winter is the season when the days become shorter and we don't want to wake up early. It's the time when Earth is far away from the Sun, and hence, kinda colder. </p>
+    </div>
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 7 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+        const date = new Date()
+        //depending upon the date, the snowflakes intensity would change
+        var snowInterval = 100
+        if(date.getMonth() == 10 || date.getMonth() == 11 || date.getMonth() == 0){
+            if(date.getMonth() == 10){
+                snowInterval = 100;
+            } else if(date.getMonth() == 11){
+                snowInterval = 10;
+            } else if(date.getMonth() == 0){
+                snowInterval = 70;
+            }
+        }
+        
+
+        setInterval(createSnowflake, snowInterval);
+    </script>
+</body>
+</html>
